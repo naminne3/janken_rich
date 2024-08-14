@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,133 +10,78 @@
 </head>
 
 <body>
-    <!-- ヘッダー・タイトル -->
-    <header>
-        <h1 class="tittle">都道府県クイズ</h1>
-    </header>
+
+            <!-- ヘッダー・タイトル -->
+            <!-- 背景水色、文字白色？、装飾黄色 -->
+            <header>
+                <h1 class="tittle">都道府県クイズ</h1>
+            </header>
+
+     <article class="container">
 
 
-    <!-- 都道府県の図（メインビジュアル）-->
-    <main>
-        
-        <h1 class="main-img">都道府県の図</h1>
+        <article class="map-article">
 
 
-    </main>
+            <!-- ★★★ 都道府県の図（メインビジュアル）-->
+            <!-- ★★★ 地図の色塗り機能を入れる   -->
+
+            <main>
+                
+                <h1 class="main-img">都道府県の図</h1>
+                <img src="/image/map-sample.jpeg" alt="">
+
+            </main>
+
+        </article>
+
+        <!-- クイズセクション -->
+        <article class="quiz-article">
 
 
-
-    <!-- 問題の進度 -->
-    <section>
-
-
-        <h1 class="progress">問題の進度</h1>
-
-
-
-    </section>
-
-
-    <!-- クイズセクション -->
-    <section>
-
-        <h1 class="quiz-main">問題</h1>
-
-
-        <div class="quiz1">
-            <!-- 答えはA奈良 -->
-            <div class="quiz1-main">桜の名所として知られる「吉野山」がある県はどれでしょう？</div>
-            <div class="quiz1-answer-a">A. 奈良県</div>
-            <div class="quiz1-answer-b">B. 山梨県</div>
-            <div class="quiz1-answer-c">C. 京都府</div>
-            <div class="quiz1-result-correct">せいかい！</div>
-            <div class="quiz1-result-wrong">ざんねん！</div>
-            <div class="quiz1-result-memo">吉野山は奈良県にあるよ</div>
-
-        </div>
-
-
-        <div class="quiz2">
-            <!-- 答えはB山口 -->
-            <div class="quiz2-main">「ふぐ」の養殖が盛んな県はどれでしょう？</div>
-            <div class="quiz2-answer-a">A. 福岡県</div>
-            <div class="quiz2-answer-b">B. 山口県</div>
-            <div class="quiz2-answer-c">C. 長崎県</div>
-            <div class="quiz2-result-correct">せいかい！</div>
-            <div class="quiz2-result-wrong">ざんねん！</div>
-            <div class="quiz2-result-memo">ふぐの養殖が盛んなのは、山口県だよ</div>
-            
-        
-        </div>
+            <!-- 問題、装飾する -->
+            <h1 class="quiz-main">問題</h1>
 
 
 
-        <div class="quiz3">
-             <!-- 答えはA長野 -->
-            <div class="quiz3-main">「松茸」の生産量が日本一と言われる県はどれでしょう？</div>
-            <div class="quiz3-answer-a">A. 長野県</div>
-            <div class="quiz3-answer-b">B. 北海道</div>
-            <div class="quiz3-answer-c">C. 山形県</div>
-            <div class="quiz3-result-correct">せいかい！</div>
-            <div class="quiz3-result-wrong">ざんねん！</div>
-            <div class="quiz3-result-memo">松茸の生産量が日本一なのは、長野県なんだね！</div>
-            
-        </div>
+            <!-- ★★★ 問題の進度をバーか、足跡で入れたい -->
+            <div>
 
+                <h1 class="progress">問題の進度</h1>
 
-        <div class="quiz4">
-            <!-- 答えはC香川  -->
-            <div class="quiz4-main">「小豆島」がある県はどれでしょう？</div>
-            <div class="quiz4-answer-a">A. 徳島県</div>
-            <div class="quiz4-answer-b">B. 愛媛県</div>
-            <div class="quiz4-answer-c">C. 香川県</div>
-            <div class="quiz4-result-correct">せいかい！</div>
-            <div class="quiz4-result-wrong">ざんねん！</div>
-            <div class="quiz4-result-memo">小豆島は香川県にあるよ</div>
-            
-        </div>
+            </div>
+
+            <section class="quiz-section">
+                <button class="start-btn">問題スタート</button>
+                <div class="quiz-container" style="display:none;">
+                    <div id="question"></div>
+                    <div id="options">
+                        <button class="option-btn" data-answer="A"></button>
+                        <button class="option-btn" data-answer="B"></button>
+                        <button class="option-btn" data-answer="C"></button>
+                    </div>
+                    <div id="result" style="display:none;"></div>
+                    <div id="result-memo" style="display:none;"></div>
+                    <button id="next-btn" style="display:none;">次のクイズに進む</button>
+                    <button id="result-btn" style="display:none;">結果を見る</button>
+                </div>
         
 
-        <div class="quiz5">
-            <!-- 答えはA大阪 -->
-            <div class="quiz5-main">「カレーパン」の発祥の地と言われている県はどこでしょう？</div>
-            <div class="quiz5-answer-a">A. 大阪府</div>
-            <div class="quiz5-answer-b">B. 東京都</div>
-            <div class="quiz5-answer-c">C. 神奈川県</div>
-            <div class="quiz5-result-correct">せいかい！</div>
-            <div class="quiz5-result-wrong">ざんねん！</div>
-            <div class="quiz5-result-memo">一説にカレーパンは大阪が発祥と言われているよ。</div>
-           
-        </div>
+            </section>
 
-    </section>
-
-   <!-- 次へボタン -->
-    <section>
-
-        <div class="quiz-next">
-            <div class="next-btn">次のクイズに進む</div>
-            <div class="result-btn">結果を見る</div>
-        </div>
-
-    </section>
+            <section class="result-section" style="display:none;">
+                <h1 class="quiz-allresult">結果は・・・</h1>
+                <h1 id="final-score" class="quiz-score">・・点！</h1>
+                <h1 id="score-comment"></h1>
+            </section>
 
 
-    <!-- 回答結果 -->
-    <section>
-        
-        <div class="allresult">
 
-            <h1 class="quiz-allresult">結果は・・・</h1>
-            <h1 class="quiz-score">・・点！</h1>
-            <h1 class="score-comment1">全部正解！すごいね！</h1>
-            <h1 class="score-comment2">がんばったね！</h1>
-            <h1 class="score-comment3">繰り返し問題を解くと、だんだん分かるようになるよ！もう一度やって見てね。</h1>
 
-        </div>  
 
-    </section>
+        </article>
 
+    </article>
 
     <!-- フッター -->
     <footer>
@@ -148,7 +93,9 @@
 
 
     <!-- js -->
-    <script src="js/script.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/script.js"></script>
     
 </body>
 </html>
