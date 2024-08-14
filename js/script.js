@@ -101,7 +101,7 @@ $(document).ready(function () {
         } else if (score >= 40) {
             comment = 'がんばったね！';
         } else {
-            comment = 'もう一度やって見てね。';
+            comment = 'もう一度やってみてね。';
         }
         $('#score-comment').text(comment);
     });
