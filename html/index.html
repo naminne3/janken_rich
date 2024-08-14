@@ -20,18 +20,14 @@
      <article class="container">
 
 
-        <article class="map-article">
-
+        <article class="map-container">
 
             <!-- ★★★ 都道府県の図（メインビジュアル）-->
             <!-- ★★★ 地図の色塗り機能を入れる   -->
+             <!-- map-containerで良いか考える -->
 
-            <main>
-                
-                <h1 class="main-img">都道府県の図</h1>
-                <img src="/image/map-sample.jpeg" alt="">
-
-            </main>
+                <object type="image/svg+xml" data="/svg/map-full.svg" id="japan-map"></object>
+           
 
         </article>
 
@@ -45,38 +41,45 @@
 
 
             <!-- ★★★ 問題の進度をバーか、足跡で入れたい -->
-            <div class="progress-bar">
+            <!-- <div class="progress-bar">
                 
                     <div class="progress-bar-fill"></div>
                 
 
-            </div>
+            </div> -->
 
-            <section class="quiz-section">
-                <button class="start-btn">問題スタート</button>
-                <div class="quiz-container" style="display:none;">
-                    <div id="question"></div>
-                    <div id="options">
-                        <button class="option-btn" data-answer="A"></button>
-                        <button class="option-btn" data-answer="B"></button>
-                        <button class="option-btn" data-answer="C"></button>
+
+
+            <div class="quiz-all-container">
+
+                <section class="quiz-section">
+                    <button class="start-btn">>>問題スタート >></button>
+
+
+
+                    <div class="quiz-container" style="display:none;">
+                        <div id="question"></div>
+                        <div id="options">
+                            <button class="option-btn" data-answer="A"></button>
+                            <button class="option-btn" data-answer="B"></button>
+                            <button class="option-btn" data-answer="C"></button>
+                        </div>
+                        <div id="result" style="display:none;"></div>
+                        <div id="result-memo" style="display:none;"></div>
+                        <button id="next-btn" style="display:none;">次のクイズに進む</button>
+                        <button id="result-btn" style="display:none;">結果を見る</button>
                     </div>
-                    <div id="result" style="display:none;"></div>
-                    <div id="result-memo" style="display:none;"></div>
-                    <button id="next-btn" style="display:none;">次のクイズに進む</button>
-                    <button id="result-btn" style="display:none;">結果を見る</button>
-                </div>
-        
+            
 
-            </section>
+                </section>
 
-            <section class="result-section" style="display:none;">
-                <h1 class="quiz-allresult">結果は・・・</h1>
-                <h1 id="final-score" class="quiz-score">・・点！</h1>
-                <h1 id="score-comment"></h1>
-            </section>
+                <section class="result-section" style="display:none;">
+                    <h1 class="quiz-allresult">結果は・・・</h1>
+                    <h1 id="final-score" class="quiz-score">・・点！</h1>
+                    <h1 id="score-comment"></h1>
+                </section>
 
-
+         </div>
 
 
 
