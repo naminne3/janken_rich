@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    
+    // クイズデータを定義する。（5都道府県の質問、回答、正解、コメント）
     const quizzes = [
         {
             question: '桜の名所として知られる「吉野山」がある県はどれでしょう？',
@@ -32,64 +34,68 @@ $(document).ready(function () {
         }
     ];
 
-    console.log("クイズ")
 
+    //変数を初期化する。 
     let currentQuizIndex = 0;
     let score = 0;
 
+
+    // クイズをロードする
+    // quizzez からクイズを取り出す。
     function loadQuiz() {
         const quiz = quizzes[currentQuizIndex];
-        $('#question').text(quiz.question);
-        $('#options .option-btn').each(function (index) {
-            $(this).text(quiz.options[index]);
-            $(this).data('answer', String.fromCharCode(65 + index)); // A, B, C
+        $('#question').text(quiz.question); // 質問を表示 
+        $('#options .option-btn').each(function (index) { // 選択肢を表示
+            $(this).text(quiz.options[index]); // optionから選択肢を持ってくる
+            $(this).data('answer', String.fromCharCode(65 + index)); // 答え合わせ用
         });
-        $('#result, #result-memo, #next-btn, #result-btn').hide();
+        $('#result, #result-memo, #next-btn, #result-btn').hide(); // 不要なものを非表示にする
     }
 
-    console.log("クイズ2")
-
+    // 結果を表示する
     function showResult(isCorrect) {
         const quiz = quizzes[currentQuizIndex];
-        $('#result').text(isCorrect ? 'せいかい！' : 'ざんねん！').show();
-        $('#result-memo').text(quiz.memo).show();
-        if (currentQuizIndex < quizzes.length - 1) {
-            $('#next-btn').show();
+        $('#result').text(isCorrect ? 'せいかい！' : 'ざんねん！').show(); // resultのところに結果を表示
+        $('#result-memo').text(quiz.memo).show(); // 回答に関するミニコメントを表示
+        if (currentQuizIndex < quizzes.length - 1){  // クイズの残り問題数を確認
+            $('#next-btn').show(); // 1以上であれば、次へボタン
         } else {
-            $('#result-btn').show();
+            $('#result-btn').show(); // 残りがなければ、結果ボタンを表示
         }
     }
 
-    console.log("答え")
-
-    $('.start-btn').click(function () {
-        $(this).hide();
-        $('.quiz-container').show();
-        loadQuiz();
-    });
 
 
-    console.log("スタートボタン")
-
-    $('#options').on('click', '.option-btn', function () {
-        const selectedAnswer = $(this).data('answer');
+    //選択肢によってイベントを変える。正解なら20点プラスになる。 
+    $('#options').on('click', '.option-btn', function () { // 選択ボタンが押された時に、
+        const selectedAnswer = $(this).data('answer'); // 出した答えを見る
         const isCorrect = selectedAnswer === quizzes[currentQuizIndex].correct;
         if (isCorrect) {
-            score += 20;
+            score += 20;  // 正しければ、20点加算
         }
-        showResult(isCorrect);
+        showResult(isCorrect); // 結果を表示する関数を呼び出す
     });
 
 
-    console.log("スコア")
 
+    // スタートボタン
+    $('.start-btn').click(function () { // スタートボタンが押された時、
+        $(this).hide(); // クリックされたボタンを隠す
+        $('.quiz-container').show(); // クイズコンテイナーを表示する
+        loadQuiz(); // クイズをロードする
+    });
+
+
+
+    // 次へボタン
     $('#next-btn').click(function () {
         currentQuizIndex++;
         loadQuiz();
     });
 
-    console.log("次へボタン")
-
+   
+    // 5回目が終わったら結果ボタンを押す。
+    // 点数が、満点、40点以上、それ以下で励ましコメントを変える
     $('#result-btn').click(function () {
         $('.quiz-section').hide();
         $('.result-section').show();
@@ -106,4 +112,3 @@ $(document).ready(function () {
     });
 });
 
-console.log("答え")
