@@ -8,81 +8,56 @@
 
 </head>
 
+
 <body>
 
-  
+    <!-- ヘッダー・タイトル -->
+    <header>
+        <h1 class="title">都道府県クイズ</h1>
+    </header>
 
-            <!-- ヘッダー・タイトル -->
-            <!-- 背景水色、文字白色？、装飾黄色 -->
-            <header>
-                <h1 class="title">都道府県クイズ</h1>
-            </header>
+    <!-- メインコンテンツ -->
+    <article class="container">
 
-     <article class="container">
+        <!-- 地図の箱 -->
+        <article class="map-article">
 
-
-        <article class="map-container">
-
-            <!-- ★★★ 都道府県の図（メインビジュアル）-->
-            <!-- ★★★ 地図の色塗り機能を入れる   -->
-             <!-- map-containerで良いか考える -->
-
-                <object type="image/svg+xml" data="/svg/map-full.svg" id="japan-map"></object>
-           
+                <object type="image/svg+xml" data="/svg/map-full.svg" id="japan-map"></object>           
 
         </article>
 
-        <!-- クイズセクション -->
+        <!-- クイズの箱 -->
         <article class="quiz-article">
 
+            <!-- 問題タイトル -->
+            <h1 class="quiz-main">問題 </h1>
 
-            <!-- 問題、装飾する -->
-            <h1 class="quiz-main">問題</h1>
+            <!-- クイズセクション -->
+            <section class="quiz-section">
+                <!-- 問題スタートボタン -->
+                <button class="start-btn">>>問題スタート >></button>
 
-
-
-            <!-- ★★★ 問題の進度をバーか、足跡で入れたい -->
-            <!-- <div class="progress-bar">
-                
-                    <div class="progress-bar-fill"></div>
-                
-
-            </div> -->
-
-
-
-            <div class="quiz-all-container">
-
-                <section class="quiz-section">
-                    <button class="start-btn">>>問題スタート >></button>
-
-
-
-                    <div class="quiz-container" style="display:none;">
-                        <div id="question"></div>
-                        <div id="options">
-                            <button class="option-btn" data-answer="A"></button>
-                            <button class="option-btn" data-answer="B"></button>
-                            <button class="option-btn" data-answer="C"></button>
-                        </div>
-                        <div id="result" style="display:none;"></div>
-                        <div id="result-memo" style="display:none;"></div>
-                        <button id="next-btn" style="display:none;">次のクイズに進む</button>
-                        <button id="result-btn" style="display:none;">結果を見る</button>
+                <!-- クイズ表示部分 -->
+                <div class="quiz-container" style="display:none;">
+                    <div id="question"></div>
+                    <div id="options">
+                        <button class="option-btn" data-answer="A"></button>
+                        <button class="option-btn" data-answer="B"></button>
+                        <button class="option-btn" data-answer="C"></button>
                     </div>
-            
+                    <div id="result" style="display:none;"></div>
+                    <div id="result-memo" style="display:none;"></div>
+                    <button id="next-btn" style="display:none;">次のクイズに進む</button>
+                    <button id="result-btn" style="display:none;">結果を見る</button>
+                </div>
+            </section>
 
-                </section>
-
-                <section class="result-section" style="display:none;">
-                    <h1 class="quiz-allresult">結果は・・・</h1>
-                    <h1 id="final-score" class="quiz-score">・・点！</h1>
-                    <h1 id="score-comment"></h1>
-                </section>
-
-         </div>
-
-
+            <!-- 結果セクション -->
+            <section class="result-section" style="display:none;">
+                <h1 class="quiz-allresult">結果は・・・</h1>
+                <h1 id="final-score" class="quiz-score">・・点！</h1>
+                <h1 id="score-comment"></h1>
+            </section>
 
         </article>
 
@@ -95,10 +70,7 @@
 
     </footer>
 
-
-
     <!-- js -->
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/js/script.js"></script>
     

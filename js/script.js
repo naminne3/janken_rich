@@ -1,4 +1,7 @@
+
 $(document).ready(function () {
+
+    // 問題を定義する
     const quizzes = [
         {
             question: '桜の名所として知られる「吉野山」がある県はどれでしょう？',
@@ -37,8 +40,17 @@ $(document).ready(function () {
         }
     ];
 
+
+    //リセットする 
     let currentQuizIndex = 0;
     let score = 0;
+
+    // スタートボタンを押したら、スタートボタンを隠して、クイズの箱を表示させて、クイズをロードを合図する
+    $('.start-btn').click(function () { 
+        $(this).hide(); 
+        $('.quiz-container').show(); 
+        loadQuiz(); 
+    });
 
     // クイズをロードする関数
     function loadQuiz() {
@@ -51,28 +63,15 @@ $(document).ready(function () {
         $('#result, #result-memo, #next-btn, #result-btn').hide();
     }
 
-    function showResult(isCorrect) {
-        const quiz = quizzes[currentQuizIndex];
-        $('#result')
-            .text(isCorrect ? 'せいかい！' : 'ざんねん！')
-            .css('color', isCorrect ? 'green' : 'red') // 正解なら緑、不正解なら赤
-            .show();
-        $('#result-memo').text(quiz.memo).show();
-        if (currentQuizIndex < quizzes.length - 1){
-            $('#next-btn').show();
-        } else {
-            $('#result-btn').show();
-        }
-    }
-
+    // 選択肢のボタンを押したら、答えを確認する。あっていれば20点加算する。結果を合図する。
     $('#options').on('click', '.option-btn', function () { 
-
-
         const selectedAnswer = $(this).data('answer'); 
         const isCorrect = selectedAnswer === quizzes[currentQuizIndex].correct;
         if (isCorrect) {
             score += 20;  
         }
+
+        // 結果があっていたら、地図の色塗りに指示を出す
         showResult(isCorrect); 
         if (isCorrect) {
             colorPrefecture(quizzes[currentQuizIndex].correctClass); 
@@ -80,17 +79,42 @@ $(document).ready(function () {
 
     });
 
-    $('.start-btn').click(function () { 
-        $(this).hide(); 
-        $('.quiz-container').show(); 
-        loadQuiz(); 
-    });
+    // 地図の色塗り。正解し、色塗りの指示を受けたら色を塗る
+    function colorPrefecture(prefectureClass) {
+        // SVGファイルから適切なクラスを呼び出す。色を赤く塗る
+        const svgObject = document.getElementById("japan-map");
+        const svgDoc = svgObject.contentDocument;
+        const prefecture = svgDoc.querySelector(`.${prefectureClass}`);
+        if (prefecture) {
+            prefecture.style.fill = "red";
+        }
+    }
 
+
+    // 正解を見に行く、正解と不正解で色とメモを変える
+    function showResult(isCorrect) {
+        const quiz = quizzes[currentQuizIndex];
+        $('#result')
+            .text(isCorrect ? 'せいかい！' : 'ざんねん！')
+            .css('color', isCorrect ? 'green' : 'red') // 正解なら緑、不正解なら赤
+            .show();
+        $('#result-memo').text(quiz.memo).show();
+
+        // 残りの問題数で次へボタンか結果ボタンを表示する
+        if (currentQuizIndex < quizzes.length - 1){
+            $('#next-btn').show();
+        } else {
+            $('#result-btn').show();
+        }
+    }
+
+    // 次へボタン
     $('#next-btn').click(function () {
         currentQuizIndex++;
         loadQuiz();
     });
 
+    // 結果ボタン。クイズセクションを消して、結果セクションを表示。点数計算して表示。点数に応じたコメントを表示
     $('#result-btn').click(function () {
         $('.quiz-section').hide();
         $('.result-section').show();
@@ -103,16 +127,7 @@ $(document).ready(function () {
         } else {
             comment = 'もう一度やってみてね。';
         }
-        $('#score-comment').text(comment);
+        $('#score-comment').text(comment); // 〜〜点部分
     });
 
-    function colorPrefecture(prefectureClass) {
-        // SVGファイルがロードされた後に色を変更する
-        const svgObject = document.getElementById("japan-map");
-        const svgDoc = svgObject.contentDocument;
-        const prefecture = svgDoc.querySelector(`.${prefectureClass}`);
-        if (prefecture) {
-            prefecture.style.fill = "red";
-        }
-    }
 });
